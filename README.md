@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI-Enabled Precision Advisory Platform for Oilseed Productivity (India)
 
 A complete full-stack web application for precision agriculture advisory using ML-based yield prediction for Indian oilseed farmers.
@@ -324,3 +325,7 @@ For issues or questions, please create an issue in the repository.
 ---
 
 **Built with ❤️ for Indian Farmers**
+=======
+# SIH_Oilseed_project
+A solution for the SIH 2025 Oilseed yield optimization problem
+>>>>>>> 106b65d23d57af1e5c526ded93570f8dd9e8abaf
