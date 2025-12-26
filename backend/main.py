@@ -6,18 +6,18 @@ from datetime import timedelta
 import models
 import schemas
 import auth
-from database import engine, get_db
+from database import engine, get_db, init_db
 from ml.predict import predict_yield, generate_advisory
 
 # Create database tables
-models.Base.metadata.create_all(bind=engine)
+init_db()
 
 app = FastAPI(title="AgriAdvisor API", version="1.0.0")
 
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=["http://localhost:5173", "http://localhost:3000", "*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
