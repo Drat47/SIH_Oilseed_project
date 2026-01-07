@@ -1,0 +1,14 @@
+# Simplified dependencies for older systems
+fastapi==0.95.0
+uvicorn==0.21.0
+sqlalchemy==1.4.48
+pydantic==1.10.7
+python-jose==3.3.0
+passlib==1.7.4
+python-multipart==0.0.6
+pandas==1.5.3
+numpy==1.24.3
+scikit-learn==1.2.2
+joblib==1.2.0
+python-dotenv==1.0.0
+bcrypt==4.0.1

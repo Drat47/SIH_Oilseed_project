@@ -1,0 +1,6 @@
+field_id,name,area,crop_type,latitude,longitude,soil_type,irrigation_type
+1,Field A - North Plot,2.5,Mustard,28.6139,77.2090,Loamy,Drip
+2,Field B - South Plot,3.2,Groundnut,28.6129,77.2080,Sandy Loam,Sprinkler
+3,Field C - East Plot,4.0,Soybean,28.6149,77.2100,Clay Loam,Flood
+4,Field D - West Plot,1.8,Sunflower,28.6119,77.2070,Loamy,Drip
+5,Field E - Central Plot,1.0,Mustard,28.6134,77.2085,Sandy,Sprinkler

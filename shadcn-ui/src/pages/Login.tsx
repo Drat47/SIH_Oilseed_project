@@ -20,26 +20,26 @@ export default function Login() {
     setLoading(true);
 
     try {
-      // Demo mode - accept any credentials
-      if (email && password) {
-        const mockUser = {
-          id: 1,
-          email: email,
-          name: 'Demo Farmer',
-          phone: '+91 9876543210',
-        };
-        const mockToken = 'demo-token-' + Date.now();
-        
-        authService.setToken(mockToken);
-        authService.setUser(mockUser);
-        
-        toast.success('Login successful!');
-        navigate('/dashboard');
+      // Real API call to backend
+      const response = await authAPI.login({ email, password });
+      
+      // Store token and user data
+      authService.setToken(response.access_token);
+      authService.setUser(response.user);
+      
+      toast.success(`Welcome back, ${response.user.name}!`);
+      navigate('/dashboard');
+    } catch (error: any) {
+      console.error('Login error:', error);
+      
+      // Handle specific error messages
+      if (error.response?.status === 401) {
+        toast.error('Invalid email or password');
+      } else if (error.code === 'ERR_NETWORK') {
+        toast.error('Cannot connect to server. Please ensure backend is running on port 8000.');
       } else {
-        toast.error('Please enter email and password');
+        toast.error('Login failed. Please try again.');
       }
-    } catch (error) {
-      toast.error('Login failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -93,7 +93,7 @@ export default function Login() {
           </div>
           <div className="mt-4 p-3 bg-blue-50 rounded-md">
             <p className="text-xs text-blue-800">
-              <strong>Demo Mode:</strong> Enter any email and password to login
+              <strong>Note:</strong> Make sure the backend server is running on http://localhost:8000
             </p>
           </div>
         </CardContent>
