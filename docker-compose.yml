@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: oilseed_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=sqlite:///./data/oilseed.db
+      - ML_SERVICE_URL=http://ml_service:5000
+    depends_on:
+      - ml_service
+
+  frontend:
+    build: ./frontend
+    container_name: oilseed_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+
+  ml_service:
+    build: ./ml_service
+    container_name: oilseed_ml_service
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./ml_service:/app
+
